@@ -14,9 +14,21 @@
             })
         .state('idea',{
             url : '/idea',
-            templateUrl : 'components/status/statusView.html',
-            controller : 'StatusController as idea'
+            templateUrl : 'components/status/ideaView.html',
+            controller : 'IdeaController as idea'
 
             });
+        })
+    .run(function($rootScope,$state,User){
+        $rootScope.$on('$stateChangeStart',function() {
+            var loggedInUser = User.getLoggedInUser();
+            console.log("jehrw"+loggedInUser.uid);
+            if(loggedInUser) {
+                $rootScope.loggedInUserData  = User.getUserData(loggedInUser.uid);
+                console.log("werwqer",$rootScope.loggedInUserData);
+            
+            }
         });
+    });
+            
     })();    
