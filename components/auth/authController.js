@@ -1,10 +1,9 @@
 (function(){
     'use strict';
     angular
-        .module('ideaApp');
-        .controller('AuthController',AuthController);
-
-    function AuthController(Auth $state){
+        .module('ideasaverApp')
+        .controller('AuthController',AuthController)
+    function AuthController(Auth, $state){
         var vm = this;
         vm.createUser = createUser;
         vm.login = login;
@@ -19,4 +18,18 @@
         vm.error = error;
     });
     }
+    function login() {
+        Auth.$authWithPassword({
+            email : vm.email,
+            password : vm.password
+        }).then(function(data) {
+            vm.email = null;
+            vm.password = null;
+            $state.go('status');
+        }).catch(function(error) {
+            console.log(error);
+        });
     }
+    }
+})();
+    

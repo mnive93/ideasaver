@@ -2,7 +2,7 @@
     'user strict';
     angular 
         .module('ideasaverApp',['firebase','ngMaterial','angular-md5','ui.router'])
-        .config(function($stateProvider,$urlProvider)) {
+        .config(function($stateProvider,$urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/auth');
     $stateProvider
@@ -14,8 +14,8 @@
             })
         .state('idea',{
             url : '/idea',
-            templateUrl : 'components/status/ideaView.html',
-            controller : 'IdeaController as idea'
+            templateUrl : 'components/status/statusView.html',
+            controller : 'StatusController as idea'
 
             });
         });

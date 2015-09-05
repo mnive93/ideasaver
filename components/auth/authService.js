@@ -1,7 +1,7 @@
 (function() {
     'use strict' ;
     angular 
-    .module('ideaApp')
+    .module('ideasaverApp')
     .factory('Auth',AuthService);
 
     function AuthService($firebaseAuth) {
